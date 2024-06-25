@@ -51,10 +51,13 @@ export async function POST(req: Request) {
       data: { username, email, password: hashedPassword },
     });
 
-    console.log({ newUser });
     return NextResponse.json(
       {
-        user: { username: newUser.username, email: newUser.email },
+        user: {
+          id: newUser.id,
+          username: newUser.username,
+          email: newUser.email,
+        },
         message: "User created successfully.",
       },
       { status: 201 }
